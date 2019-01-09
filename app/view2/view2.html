@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="view2.css" media="screen" />
+    <script src="../lib/angular/angular.js"></script>
+    <script type="text/javascript" src="view2.js"></script>
+</head>
+<body>
+<body ng-app="myAppView2">
+<div class="container" ng-controller="HelloController">
+    <div class="first-item" >
+        <h1>Bundesland</h1>
+        <ul >
+            <a href="#" class="list-element" ng-repeat="bundesland in bundeslaender" ng-click="showDetails(bundesland)">{{bundesland}}</a>
+        </ul>
+    </div>
+    <div class="second-item">
+        <h1>Wahlkreis</h1>
+        <ul>
+            <a href="#" class="list-element" ng-repeat="wahlkreis in wahlkreise" ng-click="showDiagram(wahlkreis)">{{wahlkreis}}</a>
+        </ul>
+    </div>
+</div>
+</body>
+
+</body>
+</html>
