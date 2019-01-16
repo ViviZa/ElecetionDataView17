@@ -2,15 +2,10 @@
 
 }
 
-.first-item {
+.first-item, .second-item, .third-item {
     float: left;
     margin: 10px;
 }
-.second-item {
-    float: left;
-    margin: 10px;
-}
-
 .list-element {
     display: block;
 }

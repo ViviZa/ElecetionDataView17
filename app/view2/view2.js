@@ -8,7 +8,7 @@ app.controller("HelloController", function ($scope) {
     var bayern = ['Ostallgäu', 'Oberallgäu', 'Donau-Ries', 'Aschaffenburg'];
     var defaultVal = ['Wahlkreis1', "Wahlkreis2", "Wahlkreis3"];
 
-    $scope.wahlkreise = defaultVal;
+    $scope.wahlkreise = [];
 
     $scope.showDetails = function (value) {
         if (value === 'Berlin') {
