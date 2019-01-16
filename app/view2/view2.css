@@ -12,3 +12,6 @@
 .ergebis-table {
    width:100%;
 }
+td {
+    margin: 5px;
+}

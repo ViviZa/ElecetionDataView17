@@ -19,7 +19,7 @@
     <div class="second-item">
         <h1>Wahlkreis</h1>
         <ul>
-            <a href="#" class="list-element" ng-repeat="wahlkreis in wahlkreise" ng-click="showDiagram(wahlkreis)">{{wahlkreis}}</a>
+            <a href="#" class="list-element" ng-repeat="wahlkreis in wahlkreise" ng-click="showDiagram(wahlkreis.id)">{{wahlkreis.name}}</a>
         </ul>
     </div>
     <div class="third-item">
@@ -31,9 +31,9 @@
                 <th>Zweitstimme</th>
             </tr>
             <tr  ng-repeat="ergebnis in ergebnisse">
-                <td>{{ergebnis.partei}}</td>
-                <td>{{ergebnis.erststimme}}</td>
-                <td>{{ergebnis.zweitstimme}}</td>
+                <td>{{ergebnis.party}}</td>
+                <td>{{ergebnis.first_vote}}</td>
+                <td>{{ergebnis.second_vote}}</td>
             </tr>
         </table>
     </div>
