@@ -3,7 +3,7 @@
 var app = angular.module('myAppView2', []);
 
 app.controller("HelloController", function ($scope) {
-    $scope.bundeslaender = [];
+    $scope.bundeslaender = ["Bayern"];
     $scope.wahlkreise = [];
     $scope.ergebnisse = [];
 
