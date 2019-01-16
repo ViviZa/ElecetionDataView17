@@ -9,11 +9,11 @@
 </head>
 <body>
 <body ng-app="myAppView2">
-<div class="container" ng-controller="HelloController" data-ng-init="init()">
+<div class="container" ng-controller="HelloController" ng-init="init()">
     <div class="first-item" >
         <h1>Bundesland</h1>
         <ul >
-            <a href="#" class="list-element" ng-repeat="bundesland in bundeslaender" ng-click="showDetails(bundesland)">{{bundesland}}</a>
+            <a href="#" class="list-element" ng-repeat="bundesland in bundeslaender track by $index" ng-click="showDetails(bundesland.id)">{{bundesland.name}}</a>
         </ul>
     </div>
     <div class="second-item">
