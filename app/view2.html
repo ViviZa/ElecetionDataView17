@@ -34,7 +34,7 @@
             </tr>
             <tr ng-repeat="ergebnis in ergebnisse">
                 <td>{{ergebnis.party}}</td>
-                <td>{{ergebnis.first_vote}}</td>
+                <td>{{calculatePercentage(ergebnis.first_vote)}}</td>
                 <td>{{ergebnis.second_vote}}</td>
             </tr>
         </table>

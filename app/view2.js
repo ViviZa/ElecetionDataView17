@@ -24,6 +24,18 @@ app.controller("HelloController", function ($scope, $http) {
             });
     };
 
+    function calculateTotal(){
+        var total = 0;
+        $scope.ergebnisse.first_vote.forEach(function(result) {
+            total = total + result
+        });
+        return total;
+    };
+
+    $scope.calculatePercentage = function (absolute){
+        return absolute/calculateTotal();
+    };
+
     $scope.init = function () {
         $http.get('http://localhost:5000/getAllStates').then(function (response) {
             $scope.bundeslaender = JSON.parse(response.data);
