@@ -3,15 +3,18 @@
 var app = angular.module('myAppView2', []);
 
 app.controller("HelloController", function ($scope) {
-    $scope.bundeslaender = ['Berlin', 'Brandenburg', 'Bayern', 'Baden-Würtemberg', 'Nordrhein-Westfalen'];
-    var berlin = ['Berlin-Mitte', 'Berlin-Neukölln', 'Berlin-Pankow'];
-    var bayern = ['Ostallgäu', 'Oberallgäu', 'Donau-Ries', 'Aschaffenburg'];
-    var defaultVal = ['Wahlkreis1', "Wahlkreis2", "Wahlkreis3"];
-
+    $scope.bundeslaender = [];
     $scope.wahlkreise = [];
     $scope.ergebnisse = [];
 
+    $http.get("http://localhost:5000/getAllStates")
+        .then(function(response) {
+            $scope.bundeslaender = response.data;
+        });
+
+
     $scope.showDetails = function (value) {
+        $scope.ergebnisse = [];
         if (value === 'Berlin') {
             $scope.wahlkreise = berlin;
         } else if (value === 'Bayern') {
@@ -24,7 +27,8 @@ app.controller("HelloController", function ($scope) {
         return $scope.wahlkreise;
     };
 
-    $scope.showDiagram = function (value) {
+    $scope.showDiagram = function () {
+        $scope.ergebnisse = [];
 
         var result = [
             {
@@ -40,9 +44,6 @@ app.controller("HelloController", function ($scope) {
         ];
 
         $scope.ergebnisse = result;
-
-        //TODO display diagrams on click
-        console.log(value);
     }
 });
 
