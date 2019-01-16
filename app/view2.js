@@ -24,16 +24,17 @@ app.controller("HelloController", function ($scope, $http) {
             });
     };
 
-    function calculateTotal(){
+    function calculateTotal(type){
         var total = 0;
-        $scope.ergebnisse.first_vote.forEach(function(result) {
-            total = total + result
+        $scope.ergebnisse.forEach(function(result) {
+            if(type === 'first') total = total + result.first_vote;
+            if(type === 'second') total = total + result.second_vote;
         });
         return total;
     };
 
-    $scope.calculatePercentage = function (absolute){
-        return absolute/calculateTotal();
+    $scope.calculatePercentage = function (absolute, type){
+        $scope.percentage = (absolute * 100)/calculateTotal(type) + '%';
     };
 
     $scope.init = function () {
