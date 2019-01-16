@@ -9,6 +9,7 @@ app.controller("HelloController", function ($scope) {
     var defaultVal = ['Wahlkreis1', "Wahlkreis2", "Wahlkreis3"];
 
     $scope.wahlkreise = [];
+    $scope.ergebnisse = [];
 
     $scope.showDetails = function (value) {
         if (value === 'Berlin') {
@@ -24,6 +25,22 @@ app.controller("HelloController", function ($scope) {
     };
 
     $scope.showDiagram = function (value) {
+
+        var result = [
+            {
+                "partei" : "Die Linke",
+                "erststimme" : 10000,
+                "zweitstimme" : 10000
+            },
+            {
+                "partei" : "CDU",
+                "erststimme" : 8989,
+                "zweitstimme" : 1234
+            }
+        ];
+
+        $scope.ergebnisse = result;
+
         //TODO display diagrams on click
         console.log(value);
     }

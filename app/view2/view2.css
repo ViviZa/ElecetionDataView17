@@ -4,8 +4,11 @@
 
 .first-item, .second-item, .third-item {
     float: left;
-    margin: 10px;
+    margin: 20px;
 }
 .list-element {
     display: block;
+}
+.ergebis-table {
+   width:100%;
 }

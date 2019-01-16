@@ -24,9 +24,18 @@
     </div>
     <div class="third-item">
         <h1>Ergebnis</h1>
-        <div>
-            <!--insert table-->
-        </div>
+        <table class="ergebis-table">
+            <tr>
+                <th>Partei</th>
+                <th>Erststimme</th>
+                <th>Zweitstimme</th>
+            </tr>
+            <tr  ng-repeat="ergebnis in ergebnisse">
+                <td>{{ergebnis.partei}}</td>
+                <td>{{ergebnis.erststimme}}</td>
+                <td>{{ergebnis.zweitstimme}}</td>
+            </tr>
+        </table>
     </div>
 </div>
 </body>
