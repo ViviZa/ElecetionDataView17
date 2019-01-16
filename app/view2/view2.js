@@ -7,24 +7,15 @@ app.controller("HelloController", function ($scope) {
     $scope.wahlkreise = [];
     $scope.ergebnisse = [];
 
-    $http.get("http://localhost:5000/getAllStates")
-        .then(function(response) {
-            $scope.bundeslaender = response.data;
-        });
-
-
     $scope.showDetails = function (value) {
         $scope.ergebnisse = [];
-        if (value === 'Berlin') {
-            $scope.wahlkreise = berlin;
-        } else if (value === 'Bayern') {
-            $scope.wahlkreise = bayern;
-        }
-        else {
-            $scope.wahlkreise = defaultVal;
-        }
 
-        return $scope.wahlkreise;
+        $http.get("http://localhost:5000/getAllDistrictsOF" + value)
+            .then(function(response) {
+                $scope.wahlkreise = response.data;
+            });
+
+        // return $scope.wahlkreise;
     };
 
     $scope.showDiagram = function () {
@@ -44,6 +35,13 @@ app.controller("HelloController", function ($scope) {
         ];
 
         $scope.ergebnisse = result;
+    };
+
+    $scope.init = function () {
+        $http.get("http://localhost:5000/getAllStates")
+            .then(function (response) {
+                $scope.bundeslaender = response.data;
+            });
     }
 });
 
