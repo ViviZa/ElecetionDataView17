@@ -32,18 +32,18 @@ app.controller("HelloController", function ($scope, $http) {
             });
     };
 
-    function calculateTotal(type) {
-        var total = 0;
-        $scope.votes.forEach(function(result) {
-            if(type === 'first') total = total + result.first_vote;
-            if(type === 'second') total = total + result.second_vote;
-        });
-        return total;
+    $scope.calculatePercentage = function (absolute, type) {
+        $scope.percentage = (absolute * 100) / calculateTotal(type) + '%';
     };
 
-    $scope.calculatePercentage = function (absolute, type) {
-        $scope.percentage = (absolute * 100)/calculateTotal(type) + '%';
-    };
+    function calculateTotal(type) {
+        var total = 0;
+        $scope.votes.forEach(function (result) {
+            if (type === 'first') total = total + result.first_vote;
+            if (type === 'second') total = total + result.second_vote;
+        });
+        return total;
+    }
 
     $scope.init = function () {
         $http.get('http://localhost:5000/getAllStates').then(function (response) {
@@ -55,7 +55,7 @@ app.controller("HelloController", function ($scope, $http) {
         });
     };
 
-
+    //for local testing
     var exampleStates = [
         {"id": 1, "name": "Berlin"},
         {"id": 2, "name": "Bayern"}
