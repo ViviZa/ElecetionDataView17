@@ -13,29 +13,29 @@
     <div class="first-item">
         <h1>Bundesland</h1>
         <ul>
-            <a href="#" class="list-element" ng-repeat="bundesland in bundeslaender track by $index"
-               ng-click="showDetails(bundesland.id)">{{bundesland.name}}</a>
+            <a href="#" class="list-element" ng-repeat="state in states track by $index"
+               ng-click="showDetails(state.id)">{{state.name}}</a>
         </ul>
     </div>
     <div class="second-item">
         <h1>Wahlkreis</h1>
         <ul>
-            <a href="#" class="list-element" ng-repeat="wahlkreis in wahlkreise"
-               ng-click="showPartyTable(wahlkreis.id)">{{wahlkreis.name}}</a>
+            <a href="#" class="list-element" ng-repeat="district in districts"
+               ng-click="showPartyTable(district.id)">{{district.name}}</a>
         </ul>
     </div>
     <div class="third-item">
         <h1>Ergebnis</h1>
-        <table class="ergebis-table">
+        <table class="result-table">
             <tr>
                 <th>Partei</th>
                 <th>Erststimme</th>
                 <th>Zweitstimme</th>
             </tr>
-            <tr ng-repeat="ergebnis in ergebnisse">
-                <td>{{ergebnis.party}}</td>
-                <td ng-value="calculatePercentage(ergebnis.first_vote, 'first')">{{percentage}}</td>
-                <td ng-value="calculatePercentage(ergebnis.second_vote, 'second')">{{percentage}}</td>
+            <tr ng-repeat="vote in votes">
+                <td>{{vote.party}}</td>
+                <td ng-value="calculatePercentage(vote.first_vote, 'first')">{{percentage}}</td>
+                <td ng-value="calculatePercentage(vote.second_vote, 'second')">{{percentage}}</td>
             </tr>
         </table>
     </div>
