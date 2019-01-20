@@ -22,3 +22,9 @@ th {
     padding: 15px;
     border: 1px solid #ddd;
 }
+.canvas-container {
+    margin-top: 20px;
+    height: 40%;
+    width: 40%;
+    display: flex;
+}

@@ -1,14 +1,30 @@
 'use strict';
 
-var app = angular.module('myAppView2', []);
+var app = angular.module('myAppView2', ['chart.js']);
+
+app.config(['ChartJsProvider', function (ChartJsProvider) {
+    // Configure all charts
+    ChartJsProvider.setOptions({
+        chartColors: ['#FF5252', '#FF8A80'],
+        responsive: true
+    });
+    // Configure all line charts
+    ChartJsProvider.setOptions('line', {
+        showLines: false
+    });
+}]);
 
 app.controller("HelloController", function ($scope, $http) {
     $scope.states = [];
     $scope.districts = [];
     $scope.votes = [];
+    $scope.canvasLabels = [];
+    $scope.canvasFirstVotes = [];
+    $scope.canvasSecondVotes = [];
 
     $scope.showDetails = function (value) {
         $scope.votes = [];
+        $scope.districts = [];
 
         $http.get("http://localhost:5000/getAllDistrictsOf?id=" + value)
             .then(function (response) {
@@ -33,10 +49,37 @@ app.controller("HelloController", function ($scope, $http) {
     };
 
     $scope.calculatePercentage = function (absolute, type) {
+        getCanvasData();
         $scope.percentage = (absolute * 100) / calculateTotal(type) + '%';
     };
 
+    function getCanvasData(){
+        //pie chart
+        var labelArray = [];
+        var firstVotesDataArray = [];
+        var secondVotesDataArray = [];
+        $scope.votes.forEach((function (vote) {
+            labelArray.push(vote.party);
+            firstVotesDataArray.push(vote.first_vote);
+            secondVotesDataArray.push(vote.second_vote);
+        }));
+        $scope.canvasLabels = labelArray;
+        $scope.canvasFirstVotes = firstVotesDataArray;
+        console.log( $scope.canvasLabels );
+        $scope.canvasSecondVotes = secondVotesDataArray;
+
+        //bar chart
+        $scope.labels = labelArray;
+        $scope.series = ['First Votes', 'Second Votes'];
+
+        $scope.barChartData = [
+            $scope.canvasFirstVotes,
+            $scope.canvasSecondVotes
+        ];
+    }
+
     function calculateTotal(type) {
+
         var total = 0;
         $scope.votes.forEach(function (result) {
             if (type === 'first') total = total + result.first_vote;
@@ -64,6 +107,7 @@ app.controller("HelloController", function ($scope, $http) {
         {"id": 2, "name": "Berlin-Pankow"},
         {"id": 3, "name": "Berlin-Reinickendorf"}];
     var exampleVotes = [{"party": "Die Linke", "first_vote": 23200, "second_vote": 26068},
-        {"party": "Piraten Partei Deutschland", "first_vote": 5463, "second_vote": 6608}];
+        {"party": "Piraten Partei Deutschland", "first_vote": 5463, "second_vote": 6608},
+        {"party": "Alternative für Deutschland", "first_vote": 4212, "second_vote": 7443}];
 
 });
