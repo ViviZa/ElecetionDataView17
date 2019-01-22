@@ -10,17 +10,8 @@ app.config(['ChartJsProvider', function (ChartJsProvider) {
 }]);
 
 app.controller("HelloController", function ($scope, $http) {
-    $scope.states = [];
-    $scope.districts = [];
-    $scope.votes = [];
-    $scope.canvasLabels = [];
-    $scope.canvasFirstVotes = [];
-    $scope.canvasSecondVotes = [];
 
     $scope.showDetails = function (value) {
-        $scope.votes = [];
-        $scope.districts = [];
-
         $http.get("http://localhost:5000/getAllDistrictsOf?id=" + value)
             .then(function (response) {
                 $scope.districts = JSON.parse(response.data);
