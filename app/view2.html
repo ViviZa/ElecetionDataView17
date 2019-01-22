@@ -21,8 +21,9 @@
     </div>
     <div class="second-item">
         <h1>Wahlkreis</h1>
+        <label>Search: <input ng-model="searchText"></label>
         <ul>
-            <a href="#" class="list-element" ng-repeat="district in districts"
+            <a href="#" class="list-element" ng-repeat="district in districts | filter:searchText"
                ng-click="showPartyTable(district.id)">{{district.name}}</a>
         </ul>
     </div>
