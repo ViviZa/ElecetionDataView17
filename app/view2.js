@@ -2,13 +2,6 @@
 
 var app = angular.module('myAppView2', ['chart.js']);
 
-app.config(['ChartJsProvider', function (ChartJsProvider) {
-    ChartJsProvider.setOptions({
-        responsive: true
-    });
-
-}]);
-
 app.controller("HelloController", function ($scope, $http) {
 
     $scope.showDetails = function (value) {
@@ -57,13 +50,15 @@ app.controller("HelloController", function ($scope, $http) {
         $scope.optionsFirstVotes =  {
             title: {
                 display: true,
+                responsive: true,
                 text: 'Verteilung Erststimmen'
             }
         };
         $scope.optionsSecondVotes =  {
             title: {
                 display: true,
-                text: 'Verteilung Zweitstimen'
+                responsive: true,
+                text: 'Verteilung Zweitstimmen'
             }
         };
 
@@ -79,6 +74,7 @@ app.controller("HelloController", function ($scope, $http) {
         $scope.barchartOptions =  {
             title: {
                 display: true,
+                responsive: true,
                 text: 'Übersicht Erststimmen und Zweitstimmen'
             }
         };
