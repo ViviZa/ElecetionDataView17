@@ -3,15 +3,10 @@
 var app = angular.module('myAppView2', ['chart.js']);
 
 app.config(['ChartJsProvider', function (ChartJsProvider) {
-    // Configure all charts
     ChartJsProvider.setOptions({
-        chartColors: ['#FF5252', '#FF8A80'],
         responsive: true
     });
-    // Configure all line charts
-    ChartJsProvider.setOptions('line', {
-        showLines: false
-    });
+
 }]);
 
 app.controller("HelloController", function ($scope, $http) {
@@ -99,7 +94,6 @@ app.controller("HelloController", function ($scope, $http) {
     }
 
     function calculateTotal(type) {
-
         var total = 0;
         $scope.votes.forEach(function (result) {
             if (type === 'first') total = total + result.first_vote;
