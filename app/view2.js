@@ -63,10 +63,24 @@ app.controller("HelloController", function ($scope, $http) {
             firstVotesDataArray.push(vote.first_vote);
             secondVotesDataArray.push(vote.second_vote);
         }));
+        //set data for pie charts
         $scope.canvasLabels = labelArray;
         $scope.canvasFirstVotes = firstVotesDataArray;
-        console.log( $scope.canvasLabels );
         $scope.canvasSecondVotes = secondVotesDataArray;
+
+        $scope.optionsFirstVotes =  {
+            title: {
+                display: true,
+                text: 'Verteilung Erststimmen'
+            }
+        };
+        $scope.optionsSecondVotes =  {
+            title: {
+                display: true,
+                text: 'Verteilung Zweitstimen'
+            }
+        };
+
 
         //bar chart
         $scope.labels = labelArray;
@@ -76,6 +90,12 @@ app.controller("HelloController", function ($scope, $http) {
             $scope.canvasFirstVotes,
             $scope.canvasSecondVotes
         ];
+        $scope.barchartOptions =  {
+            title: {
+                display: true,
+                text: 'Übersicht Erststimmen und Zweitstimmen'
+            }
+        };
     }
 
     function calculateTotal(type) {
