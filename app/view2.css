@@ -12,9 +12,10 @@ h1 {
 .list-element {
     display: block;
 }
-.result-table, td {
+.result-table{
     width:100%;
     text-align: left;
+    display:block;
 }
 td {
     margin: 5px;
@@ -29,5 +30,5 @@ th {
     margin-top: 20px;
     height: 40%;
     width: 40%;
-    display: flex;
+    display: block;
 }
