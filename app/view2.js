@@ -29,8 +29,26 @@ app.controller("HelloController", function ($scope, $http) {
 
     $scope.calculatePercentage = function (absolute, type) {
         getCanvasData();
-        $scope.percentage = (absolute * 100) / calculateTotal(type) + '%';
+
+        $scope.totalFirst = calculateTotal('first');
+        $scope.totalSecond = calculateTotal('second');
+
+        var percentage = 0;
+        console.log(absolute)
+
+        if (type === 'first') percentage = Math.round((absolute * 100) / $scope.totalFirst) + '%';
+        if (type === 'second') percentage = Math.round((absolute * 100) / $scope.totalSecond) + '%';
+        return percentage;
     };
+
+    function calculateTotal(type) {
+        var total = 0;
+        $scope.votes.forEach(function (result) {
+            if (type === 'first' && result.first_vote) total = total + parseInt(result.first_vote);
+            if (type === 'second' && result.second_vote) total = total + parseInt(result.second_vote);
+        });
+        return total;
+    }
 
     function getCanvasData(){
         //pie chart
@@ -80,15 +98,6 @@ app.controller("HelloController", function ($scope, $http) {
                 text: 'Übersicht Erststimmen und Zweitstimmen'
             }
         };
-    }
-
-    function calculateTotal(type) {
-        var total = 0;
-        $scope.votes.forEach(function (result) {
-            if (type === 'first') total = total + result.first_vote;
-            if (type === 'second') total = total + result.second_vote;
-        });
-        return total;
     }
 
     $scope.init = function () {

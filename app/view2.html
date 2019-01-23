@@ -39,9 +39,16 @@
             <tr ng-repeat="vote in votes">
                 <td ng-style="{'background-color': colours[$index]}"></td>
                 <td>{{vote.party}}</td>
-                <td ng-value="calculatePercentage(vote.first_vote, 'first')">{{percentage}}</td>
-                <td ng-value="calculatePercentage(vote.second_vote, 'second')">{{percentage}}</td>
+                <td>{{calculatePercentage(vote.first_vote, 'first')}}</td>
+                <td>{{calculatePercentage(vote.second_vote, 'second')}}</td>
             </tr>
+            <tr>
+                <td class="sum"></td>
+                <td class="sum"><br>Gesamtstimmen</br></td>
+                <td class="sum">{{totalFirst}}</td>
+                <td class="sum">{{totalSecond}}</td>
+            </tr>
+
         </table>
     </div>
     <div class="canvas-container">
