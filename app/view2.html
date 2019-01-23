@@ -43,24 +43,24 @@
                 <td>{{calculatePercentage(vote.second_vote, 'second')}}</td>
             </tr>
             <tr>
-                <td class="sum"></td>
-                <td class="sum"><br>Gesamtstimmen</br></td>
-                <td class="sum">{{totalFirst}}</td>
-                <td class="sum">{{totalSecond}}</td>
+                <td></td>
+                <td class="total"><br>Gesamtstimmen</br></td>
+                <td class="total">{{totalFirst}}</td>
+                <td class="total">{{totalSecond}}</td>
             </tr>
 
         </table>
     </div>
     <div class="canvas-container">
         <canvas id="pie1" class="chart chart-pie"
-                chart-data="canvasFirstVotes" chart-labels="canvasLabels" chart-options="optionsFirstVotes"  chart-colors="colours">
+                chart-data="canvasFirstVotes" chart-labels="canvasLabels" chart-options="optionsFirstVotes"  chart-colors="colors">
         </canvas>
         <canvas id="pie2" class="chart chart-pie"
-                chart-data="canvasSecondVotes" chart-labels="canvasLabels" chart-options="optionsSecondVotes" chart-colors="colours">
+                chart-data="canvasSecondVotes" chart-labels="canvasLabels" chart-options="optionsSecondVotes" chart-colors="colors">
         </canvas>
     </div>
     <canvas id="bar" class="chart chart-bar"
-            chart-data="barChartData" chart-labels="labels" chart-series="barchart" chart-options="barchartOptions">
+            chart-data="barChartData" chart-labels="labels" chart-series="series" chart-options="barchartOptions">
     </canvas>
 </div>
 </body>

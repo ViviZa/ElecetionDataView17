@@ -34,24 +34,27 @@ app.controller("HelloController", function ($scope, $http) {
         $scope.totalSecond = calculateTotal('second');
 
         var percentage = 0;
-        console.log(absolute)
 
         if (type === 'first') percentage = Math.round((absolute * 100) / $scope.totalFirst) + '%';
         if (type === 'second') percentage = Math.round((absolute * 100) / $scope.totalSecond) + '%';
+
         return percentage;
     };
 
     function calculateTotal(type) {
         var total = 0;
+
         $scope.votes.forEach(function (result) {
             if (type === 'first' && result.first_vote) total = total + parseInt(result.first_vote);
             if (type === 'second' && result.second_vote) total = total + parseInt(result.second_vote);
         });
+
         return total;
     }
 
     function getCanvasData(){
-        //pie chart
+
+        //collect chart data
         var labelArray = [];
         var firstVotesDataArray = [];
         var secondVotesDataArray = [];
@@ -60,11 +63,15 @@ app.controller("HelloController", function ($scope, $http) {
             firstVotesDataArray.push(vote.first_vote);
             secondVotesDataArray.push(vote.second_vote);
         }));
+
+        $scope.colors =  ['#000000', '#e3000f' , '#DF0404', '#579541', '#ECECEE', '#e5007d', '#009ee0'];
+
         //set data for pie charts
         $scope.canvasLabels = labelArray;
         $scope.canvasFirstVotes = firstVotesDataArray;
         $scope.canvasSecondVotes = secondVotesDataArray;
 
+        //pie 1
         $scope.optionsFirstVotes =  {
             title: {
                 display: true,
@@ -72,8 +79,8 @@ app.controller("HelloController", function ($scope, $http) {
                 text: 'Verteilung Erststimmen'
             }
         };
-        $scope.colours =  ['#000000', '#e3000f' , '#DF0404', '#579541', '#ECECEE', '#e5007d', '#009ee0'];
 
+        //pie 2
         $scope.optionsSecondVotes =  {
             title: {
                 display: true,
@@ -83,9 +90,9 @@ app.controller("HelloController", function ($scope, $http) {
         };
 
 
-        //bar chart
+        //set data for bar chart
         $scope.labels = labelArray;
-        $scope.series = ['First Votes', 'Second Votes'];
+        $scope.series = ['Erststimmen', 'Zweitstimmen'];
 
         $scope.barChartData = [
             $scope.canvasFirstVotes,
