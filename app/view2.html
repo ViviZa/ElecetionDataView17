@@ -37,7 +37,7 @@
                 <th>Zweitstimme</th>
             </tr>
             <tr ng-repeat="vote in votes">
-                <td ng-style="{'background-color': colours[$index]}"></td>
+                <td ng-style="{'background-color': colors[$index]}"></td>
                 <td>{{vote.party}}</td>
                 <td>{{calculatePercentage(vote.first_vote, 'first')}}</td>
                 <td>{{calculatePercentage(vote.second_vote, 'second')}}</td>
