@@ -31,12 +31,14 @@
         <h1>Ergebnis</h1>
         <table class="result-table">
             <tr>
+                <th></th>
                 <th>Partei</th>
                 <th>Erststimme</th>
                 <th>Zweitstimme</th>
             </tr>
             <tr ng-repeat="vote in votes">
-                <td ng-style="{'background-color': colours[$index]}" >{{vote.party}}</td>
+                <td ng-style="{'background-color': colours[$index]}"></td>
+                <td>{{vote.party}}</td>
                 <td ng-value="calculatePercentage(vote.first_vote, 'first')">{{percentage}}</td>
                 <td ng-value="calculatePercentage(vote.second_vote, 'second')">{{percentage}}</td>
             </tr>
@@ -47,12 +49,12 @@
                 chart-data="canvasFirstVotes" chart-labels="canvasLabels" chart-options="optionsFirstVotes"  chart-colors="colours">
         </canvas>
         <canvas id="pie2" class="chart chart-pie"
-                chart-data="canvasSecondVotes" chart-labels="canvasLabels" chart-options="optionsSecondVotes">
-        </canvas>
-        <canvas id="bar" class="chart chart-bar"
-                chart-data="barChartData" chart-labels="labels" chart-series="barchart" chart-options="barchartOptions">
+                chart-data="canvasSecondVotes" chart-labels="canvasLabels" chart-options="optionsSecondVotes" chart-colors="colours">
         </canvas>
     </div>
+    <canvas id="bar" class="chart chart-bar"
+            chart-data="barChartData" chart-labels="labels" chart-series="barchart" chart-options="barchartOptions">
+    </canvas>
 </div>
 </body>
 </html>

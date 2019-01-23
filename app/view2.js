@@ -54,7 +54,7 @@ app.controller("HelloController", function ($scope, $http) {
                 text: 'Verteilung Erststimmen'
             }
         };
-        $scope.colours =  ['#FF5252', '#FF8A80' , '#FFFFFF'];
+        $scope.colours =  ['#000000', '#e3000f' , '#DF0404', '#579541', '#ECECEE', '#e5007d', '#009ee0'];
 
         $scope.optionsSecondVotes =  {
             title: {
